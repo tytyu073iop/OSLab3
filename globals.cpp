@@ -4,3 +4,5 @@
 HANDLE* eventsArr = nullptr;
 HANDLE* continueEventsArr = nullptr;
 HANDLE* endEventsArr = nullptr;
+CRITICAL_SECTION* css = nullptr;
+CRITICAL_SECTION iocs;

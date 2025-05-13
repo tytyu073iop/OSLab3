@@ -18,6 +18,13 @@ int main() {
     continueEventsArr = new HANDLE[amountOfMakers];
     endEventsArr = new HANDLE[amountOfMakers];
     HANDLE* threads = new HANDLE[amountOfMakers];
+    css = new CRITICAL_SECTION[size];
+    for (size_t i = 0; i < size; i++)
+    {
+        InitializeCriticalSection(&css[i]);
+    }
+    
+    InitializeCriticalSection(&iocs);
     for (size_t i = 0; i < amountOfMakers; i++)
     {
         eventsArr[i] = CreateEvent(NULL, FALSE, FALSE, NULL);

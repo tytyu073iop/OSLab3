@@ -13,14 +13,18 @@ DWORD WINAPI maker(LPVOID comm) {
 
     while (true) {
         int number = std::rand() % obj->size;
-
+        EnterCriticalSection(&css[number]);
         if (obj->arr[number] == 0) {
             Sleep(5);
             obj->arr[number] = obj->pos + 1;
             Sleep(5);
             pom++;
+            LeaveCriticalSection(&css[number]);
         } else {
+            LeaveCriticalSection(&css[number]);
+            EnterCriticalSection(&iocs);
             std::cout << "object: " << obj->pos << ' ' << pom << ' ' << number << '\n';
+            LeaveCriticalSection(&iocs);
 
             if (!SetEvent(eventsArr[obj->pos])) {
                 std::cout << "error: " << GetLastError() << '\n';

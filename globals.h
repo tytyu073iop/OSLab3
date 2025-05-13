@@ -6,5 +6,7 @@
 extern HANDLE* eventsArr;
 extern HANDLE* continueEventsArr;
 extern HANDLE* endEventsArr;
+extern CRITICAL_SECTION* css;
+extern CRITICAL_SECTION iocs;
 
 #endif
